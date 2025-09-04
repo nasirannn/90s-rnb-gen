@@ -79,14 +79,34 @@ module.exports = {
           from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: 0 },
         },
+        "shine": {
+          from: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(100%)" },
+        },
+        "twinkle": {
+          "0%, 100%": { opacity: "0.3", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.2)" },
+        },
+        "twinkle-delay": {
+          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.1)" },
+        },
+        "twinkle-slow": {
+          "0%, 100%": { opacity: "0.5", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.3)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "collapsible-down": "collapsible-down 0.2s ease-in-out",
         "collapsible-up": "collapsible-up 0.2s ease-in-out",
+        "shine": "shine 2s ease-in-out infinite",
+        "twinkle": "twinkle 3s ease-in-out infinite",
+        "twinkle-delay": "twinkle-delay 4s ease-in-out infinite",
+        "twinkle-slow": "twinkle-slow 5s ease-in-out infinite",
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
 };

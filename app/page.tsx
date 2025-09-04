@@ -1,40 +1,36 @@
-import { BenefitsSection } from "@/components/layout/sections/benefits";
-import { CommunitySection } from "@/components/layout/sections/community";
-import { ContactSection } from "@/components/layout/sections/contact";
-import { FAQSection } from "@/components/layout/sections/faq";
-import { FeaturesSection } from "@/components/layout/sections/features";
-import { FooterSection } from "@/components/layout/sections/footer";
 import { HeroSection } from "@/components/layout/sections/hero";
-import { PricingSection } from "@/components/layout/sections/pricing";
-import { ServicesSection } from "@/components/layout/sections/services";
-import { SponsorsSection } from "@/components/layout/sections/sponsors";
-import { TeamSection } from "@/components/layout/sections/team";
-import { TestimonialSection } from "@/components/layout/sections/testimonial";
+import { IntroductionSection } from "@/components/layout/sections/introduction";
+import { ShowcaseSection } from "@/components/layout/sections/showcase";
+import { TutorialSection } from "@/components/layout/sections/tutorial";
+import { FooterSection } from "@/components/layout/sections/footer";
+import { FeaturesSection } from "@/components/layout/sections/features";
+import { FAQSection } from "@/components/layout/sections/faq";
 
 export const metadata = {
-  title: "Shadcn - Landing template",
-  description: "Free Shadcn landing page for developers",
+  metadataBase: new URL('https://only-90s-rnb.com'),
+  title: "Only 90s R&B - AI Music Generator",
+  description: "Generate authentic 90s Black R&B music with AI. Choose from New Jack Swing, Hip-Hop Soul, Contemporary R&B and more classic genres.",
   openGraph: {
     type: "website",
-    url: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "Free Shadcn landing page for developers",
+    url: "https://only-90s-rnb.com",
+    title: "Only 90s R&B - AI Music Generator",
+    description: "Generate authentic 90s Black R&B music with AI. Choose from New Jack Swing, Hip-Hop Soul, Contemporary R&B and more classic genres.",
     images: [
       {
-        url: "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+        url: "/hero-image-dark.jpeg",
         width: 1200,
         height: 630,
-        alt: "Shadcn - Landing template",
+        alt: "Only 90s R&B Music Generator",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "Free Shadcn landing page for developers",
+    site: "https://only-90s-rnb.com",
+    title: "Only 90s R&B - AI Music Generator",
+    description: "Generate authentic 90s Black R&B music with AI. Choose from New Jack Swing, Hip-Hop Soul, Contemporary R&B and more classic genres.",
     images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+      "/hero-image-dark.jpeg",
     ],
   },
 };
@@ -43,15 +39,10 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <SponsorsSection />
-      <BenefitsSection />
+      <IntroductionSection />
+      <ShowcaseSection />
+      <TutorialSection />
       <FeaturesSection />
-      <ServicesSection />
-      <TestimonialSection />
-      <TeamSection />
-      <CommunitySection />
-      <PricingSection />
-      <ContactSection />
       <FAQSection />
       <FooterSection />
     </>

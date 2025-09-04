@@ -1,27 +1,14 @@
 "use client";
-import { ChevronsDown, Github, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import React from "react";
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../ui/sheet";
-import { Separator } from "../ui/separator";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "../ui/navigation-menu";
 import { Button } from "../ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import Link from "next/link";
 import Image from "next/image";
-import { ToggleTheme } from "./toogle-theme";
+import { usePathname } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
+import AuthModal from "../ui/auth-modal";
+import { ConfirmDialog } from "../ui/confirm-dialog";
 
 interface RouteProps {
   href: string;
@@ -35,16 +22,16 @@ interface FeatureProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#testimonials",
-    label: "Testimonials",
+    href: "/blog",
+    label: "Blog",
   },
   {
-    href: "#team",
-    label: "Team",
+    href: "/studio",
+    label: "Studio",
   },
   {
-    href: "#contact",
-    label: "Contact",
+    href: "#tutorial",
+    label: "How It Works",
   },
   {
     href: "#faq",
@@ -52,139 +39,235 @@ const routeList: RouteProps[] = [
   },
 ];
 
-const featureList: FeatureProps[] = [
-  {
-    title: "Showcase Your Value ",
-    description: "Highlight how your product solves user problems.",
-  },
-  {
-    title: "Build Trust",
-    description:
-      "Leverages social proof elements to establish trust and credibility.",
-  },
-  {
-    title: "Capture Leads",
-    description:
-      "Make your lead capture form visually appealing and strategically.",
-  },
-];
+interface NavbarProps {
+  credits?: number;
+}
 
-export const Navbar = () => {
+export const Navbar = ({ credits = 3 }: NavbarProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = React.useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isSignOutConfirmOpen, setIsSignOutConfirmOpen] = React.useState(false);
+  const pathname = usePathname();
+  const { user, signOut } = useAuth();
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close user menu when mouse leaves the container
+  React.useEffect(() => {
+    const handleMouseLeave = () => {
+      setIsUserMenuOpen(false);
+    };
+
+    const userMenuContainer = document.querySelector('.user-menu-container');
+    if (userMenuContainer) {
+      userMenuContainer.addEventListener('mouseleave', handleMouseLeave);
+      return () => userMenuContainer.removeEventListener('mouseleave', handleMouseLeave);
+    }
+  }, [isUserMenuOpen]);
+
   return (
-    <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
-      <Link href="/" className="font-bold text-lg flex items-center">
-        <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-        Shadcn
+    <header className={`shadow-inner w-full z-50 flex items-center px-20 py-5 fixed top-0 left-0 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-background/30 backdrop-blur-md border-b border-border/20' 
+        : 'bg-transparent'
+    }`}>
+      <Link href="/" className="font-bold text-xl flex items-center">
+        <Image
+          src="/logo.svg"
+          alt="90s R&B Logo"
+          width={44}
+          height={44}
+          className="mr-3"
+        />
+        90s R&B Generator
       </Link>
-      {/* <!-- Mobile --> */}
-      <div className="flex items-center lg:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Menu
-              onClick={() => setIsOpen(!isOpen)}
-              className="cursor-pointer lg:hidden"
-            />
-          </SheetTrigger>
-
-          <SheetContent
-            side="left"
-            className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
-          >
-            <div>
-              <SheetHeader className="mb-4 ml-4">
-                <SheetTitle className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-                    Shadcn
-                  </Link>
-                </SheetTitle>
-              </SheetHeader>
-
-              <div className="flex flex-col gap-2">
-                {routeList.map(({ href, label }) => (
-                  <Button
-                    key={href}
-                    onClick={() => setIsOpen(false)}
-                    asChild
-                    variant="ghost"
-                    className="justify-start text-base"
-                  >
-                    <Link href={href}>{label}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <SheetFooter className="flex-col sm:flex-col justify-start items-start">
-              <Separator className="mb-2" />
-
-              <ToggleTheme />
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* <!-- Desktop --> */}
-      <NavigationMenu className="hidden lg:block mx-auto">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="bg-card text-base">
-              Features
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <div className="grid w-[600px] grid-cols-2 gap-5 p-4">
-                <Image
-                  src="https://avatars.githubusercontent.com/u/75042455?v=4"
-                  alt="RadixLogo"
-                  className="h-full w-full rounded-md object-cover"
-                  width={600}
-                  height={600}
-                />
-                <ul className="flex flex-col gap-2">
-                  {featureList.map(({ title, description }) => (
-                    <li
-                      key={title}
-                      className="rounded-md p-3 text-sm hover:bg-muted"
-                    >
-                      <p className="mb-1 font-semibold leading-none text-foreground">
-                        {title}
-                      </p>
-                      <p className="line-clamp-2 text-muted-foreground">
-                        {description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            {routeList.map(({ href, label }) => (
-              <NavigationMenuLink key={href} asChild>
-                <Link href={href} className="text-base px-2">
+      
+      {/* <!-- Desktop Navigation --> */}
+      <nav className="hidden lg:block absolute left-1/2 transform -translate-x-1/2">
+        <ul className="flex items-center space-x-2">
+          {routeList.map(({ href, label }) => {
+            const isActive = pathname === href || 
+                           (href === "/" && pathname === "/") ||
+                           (href === "/blog" && pathname.startsWith("/blog"));
+            return (
+              <li key={href}>
+                <Link 
+                  href={href} 
+                  className={`text-sm px-5 py-3 rounded-xl transition-all duration-200 ${
+                    isActive 
+                      ? 'text-primary bg-primary/10 font-medium' 
+                      : 'hover:text-primary hover:bg-primary/10'
+                  }`}
+                >
                   {label}
                 </Link>
-              </NavigationMenuLink>
-            ))}
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-      <div className="hidden lg:flex">
-        <ToggleTheme />
-
-        <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
-          <Link
-            aria-label="View on GitHub"
-            href="https://github.com/nobruf/shadcn-landing-page.git"
-            target="_blank"
-          >
-            <Github className="size-5" />
-          </Link>
-        </Button>
+      {/* <!-- Mobile Menu --> */}
+      <div className="flex items-center lg:hidden ml-auto">
+        <Menu
+          onClick={() => setIsOpen(!isOpen)}
+          className="cursor-pointer lg:hidden"
+        />
+        
+        {isOpen && (
+          <div className="fixed inset-0 z-50 lg:hidden">
+            <div className="fixed inset-0 bg-black/50" onClick={() => setIsOpen(false)} />
+            <div className="fixed left-0 top-0 h-full w-80 bg-card border-r border-border p-6">
+              <div className="flex items-center justify-between mb-6">
+                <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
+                  <Image
+                    src="/logo.svg"
+                    alt="90s R&B Logo"
+                    width={48}
+                    height={48}
+                    className="mr-2"
+                  />
+                  90s R&B
+                </Link>
+                <button onClick={() => setIsOpen(false)} className="text-2xl">×</button>
+              </div>
+              
+              <div className="flex flex-col gap-2">
+                {routeList.map(({ href, label }) => {
+                  const isActive = pathname === href || 
+                                 (href === "/" && pathname === "/") ||
+                                 (href === "/blog" && pathname.startsWith("/blog"));
+                  return (
+                    <Button
+                      key={href}
+                      onClick={() => setIsOpen(false)}
+                      asChild
+                      variant="ghost"
+                      className={`justify-start text-base ${
+                        isActive ? 'bg-primary/10 text-primary font-medium' : ''
+                      }`}
+                    >
+                      <Link href={href}>{label}</Link>
+                    </Button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* <!-- Desktop Right Side --> */}
+      <div className="hidden lg:flex ml-auto items-center gap-4">
+        {user ? (
+          <>
+            {/* Credits Display */}
+            <div className="flex items-center gap-2 px-3 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg">
+              <span className="text-sm">⚡</span>
+              <span className="text-sm font-medium text-white">{credits}</span>
+            </div>
+            
+            <div 
+              className="relative user-menu-container"
+              onMouseEnter={() => setIsUserMenuOpen(true)}
+            >
+            {/* User Avatar */}
+            <Avatar 
+              className="cursor-pointer hover:scale-105 transition-transform duration-200 border-2 border-purple-400/30"
+            >
+              <AvatarImage 
+                src={user.user_metadata?.avatar_url || user.user_metadata?.picture} 
+                alt="User Avatar"
+              />
+              <AvatarFallback className="bg-gradient-to-br from-purple-400 to-purple-600 text-white font-semibold text-sm">
+                {user.user_metadata?.full_name?.charAt(0)?.toUpperCase() || 
+                 user.email?.charAt(0).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+
+            {/* User Dropdown Menu */}
+            {isUserMenuOpen && (
+              <div className="absolute right-0 top-12 w-64 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-2xl py-2 z-50">
+                {/* User Info */}
+                <div className="px-4 py-3 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <Avatar className="w-8 h-8 border border-purple-400/30">
+                      <AvatarImage 
+                        src={user.user_metadata?.avatar_url || user.user_metadata?.picture} 
+                        alt="User Avatar"
+                      />
+                      <AvatarFallback className="bg-gradient-to-br from-purple-400 to-purple-600 text-white font-semibold text-xs">
+                        {user.user_metadata?.full_name?.charAt(0)?.toUpperCase() || 
+                         user.email?.charAt(0).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-sm truncate">
+                        {user.user_metadata?.full_name || 'User'}
+                      </p>
+                      <p className="text-white/70 text-xs truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Menu Items */}
+                <div className="py-1">
+                  <button
+                    onClick={() => {
+                      setIsSignOutConfirmOpen(true);
+                    }}
+                    className="w-full flex items-center px-4 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white transition-colors"
+                  >
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              </div>
+            )}
+            </div>
+          </>
+        ) : (
+          <Button 
+            onClick={() => setIsAuthModalOpen(true)}
+            size="default" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-2 rounded-xl font-medium"
+          >
+            Get Started
+          </Button>
+        )}
+      </div>
+
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+      />
+
+      {/* Sign Out Confirmation Dialog */}
+      <ConfirmDialog
+        isOpen={isSignOutConfirmOpen}
+        onClose={() => setIsSignOutConfirmOpen(false)}
+        onConfirm={() => {
+          signOut();
+          setIsUserMenuOpen(false);
+        }}
+        title="Sign Out"
+        message="Are you sure you want to sign out?"
+        confirmText="Sign Out"
+        cancelText="Cancel"
+        variant="destructive"
+      />
     </header>
   );
 };

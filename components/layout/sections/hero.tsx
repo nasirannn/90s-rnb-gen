@@ -1,75 +1,105 @@
 "use client";
+import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedBackground } from "@/components/ui/animated-background";
 
 export const HeroSection = () => {
   const { theme } = useTheme();
   return (
-    <section className="container w-full">
-      <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-20 md:py-32">
-        <div className="text-center space-y-8">
-          <Badge variant="outline" className="text-sm py-2">
-            <span className="mr-2 text-primary">
-              <Badge>New</Badge>
-            </span>
-            <span> Design is out now! </span>
-          </Badge>
+    <section className="relative w-full min-h-screen pt-20">
 
-          <div className="max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-bold">
-            <h1>
-              Experience the
-              <span className="text-transparent px-2 bg-gradient-to-r from-[#D247BF] to-primary bg-clip-text">
-                Shadcn
-              </span>
-              landing page
-            </h1>
-          </div>
-
-          <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
-            {`We're more than just a tool, we're a community of passionate
-            creators. Get access to exclusive resources, tutorials, and support.`}
-          </p>
-
-          <div className="space-y-4 md:space-y-0 md:space-x-4">
-            <Button className="w-5/6 md:w-1/4 font-bold group/arrow">
-              Get Started
-              <ArrowRight className="size-5 ml-2 group-hover/arrow:translate-x-1 transition-transform" />
-            </Button>
-
-            <Button
-              asChild
-              variant="secondary"
-              className="w-5/6 md:w-1/4 font-bold"
-            >
-              <Link
-                href="https://github.com/nobruf/shadcn-landing-page.git"
-                target="_blank"
-              >
-                Github respository
-              </Link>
-            </Button>
-          </div>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/only-90s-rnb-background.png"
+          alt="90s R&B Background"
+          fill
+          className="object-cover object-center select-none"
+          priority
+          quality={100}
+          sizes="100vw"
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        {/* Animated Background Effects */}
+        <AnimatedBackground>
+          <div></div>
+        </AnimatedBackground>
+        
+        {/* Twinkling Stars */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Star 1 */}
+          <div className="absolute top-16 left-16 w-1 h-1 bg-white rounded-full animate-twinkle opacity-60"></div>
+          {/* Star 2 */}
+          <div className="absolute top-28 right-24 w-1 h-1 bg-white rounded-full animate-twinkle-delay opacity-80"></div>
+          {/* Star 3 */}
+          <div className="absolute top-40 left-1/3 w-0.5 h-0.5 bg-white rounded-full animate-twinkle-slow opacity-70"></div>
+          {/* Star 4 */}
+          <div className="absolute top-56 right-1/4 w-1.5 h-1.5 bg-white rounded-full animate-twinkle opacity-50"></div>
+          {/* Star 5 */}
+          <div className="absolute top-72 left-1/2 w-1 h-1 bg-white rounded-full animate-twinkle-delay opacity-90"></div>
+          {/* Star 6 */}
+          <div className="absolute top-88 right-16 w-0.5 h-0.5 bg-white rounded-full animate-twinkle-slow opacity-60"></div>
+          {/* Star 7 */}
+          <div className="absolute top-1/3 left-12 w-1 h-1 bg-white rounded-full animate-twinkle opacity-80"></div>
+          {/* Star 8 */}
+          <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-white rounded-full animate-twinkle-delay opacity-70"></div>
+          {/* Star 9 */}
+          <div className="absolute top-2/3 left-1/4 w-0.5 h-0.5 bg-white rounded-full animate-twinkle-slow opacity-50"></div>
+          {/* Star 10 */}
+          <div className="absolute top-5/6 right-1/2 w-1 h-1 bg-white rounded-full animate-twinkle opacity-90"></div>
         </div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10 container mx-auto">
+        <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-16 md:py-24">
+          <div className="text-center space-y-8">
+            <Badge variant="outline" className="text-sm py-2 bg-transparent border-white/30 text-white">
+              <span className="mr-3 text-primary font-semibold">
+                <Badge>AI Powered</Badge>
+              </span>
+              <span className="text-white/90 font-medium"> Free Online Authentic 90s R&B Generator </span>
+            </Badge>
 
-        <div className="relative group mt-14">
-          <div className="absolute top-2 lg:-top-8 left-1/2 transform -translate-x-1/2 w-[90%] mx-auto h-24 lg:h-80 bg-primary/50 rounded-full blur-3xl"></div>
-          <Image
-            width={1200}
-            height={1200}
-            className="w-full md:w-[1200px] mx-auto rounded-lg relative rouded-lg leading-none flex items-center border border-t-2 border-secondary  border-t-primary/30"
-            src={
-              theme === "light"
-                ? "/hero-image-light.jpeg"
-                : "/hero-image-dark.jpeg"
-            }
-            alt="dashboard"
-          />
+            <div className="max-w-screen-lg mx-auto text-center">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                Create Authentic
+                <span className="text-transparent px-2 bg-gradient-to-r from-primary via-purple-400 to-blue-400 bg-clip-text">
+                  90s R&B
+                </span>
+                with AI
+              </h1>
+            </div>
 
-          <div className="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg"></div>
+            <p className="max-w-screen-md mx-auto text-base md:text-xl text-white/90 leading-relaxed mb-8">
+              Generate professional-quality 90s R&B music with AI. Choose from New Jack Swing, Hip-Hop Soul, Quiet Storm, and Neo-Soul genres with customizable moods.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8">
+              <Link href="/studio">
+                <button className="group relative inline-flex items-center gap-3 px-10 py-2.5 bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 text-white font-semibold rounded-xl hover:from-purple-700 hover:via-purple-600 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden shadow-xl border border-purple-400/20 text-xl">
+                  {/* Shine effect overlay */}
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine"></div>
+                  
+                  <svg className="relative z-10 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                  </svg>
+                  <span className="relative z-10">Try It On</span>
+                </button>
+              </Link>
+              <Link href="#introduction">
+                <button className="group relative inline-flex items-center gap-3 px-12 py-2.5 bg-white/5 text-white font-semibold rounded-xl hover:bg-white/15 transition-all duration-300 transform hover:scale-105 overflow-hidden shadow-lg hover:shadow-xl border border-white/30 text-xl">
+                  <span className="relative z-10">Learn More</span>
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>

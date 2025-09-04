@@ -1,0 +1,126 @@
+{
+  "genres": [
+    { "id": "new-jack-swing", "name": "New Jack Swing", "description": "Fusion of R&B, hip hop, and dance-pop" },
+    { "id": "hip-hop-soul", "name": "Hip-Hop Soul", "description": "R&B with hip-hop influenced beats" },
+    { "id": "quiet-storm", "name": "Quiet Storm", "description": "Smooth, mellow R&B for late-night listening" },
+    { "id": "neo-soul", "name": "Neo-Soul", "description": "Soulful R&B with jazz and funk influences" }
+  ],
+  "moods": [
+    { "id": "joyful", "name": "Joyful", "emoji": "😊" },
+    { "id": "melancholic", "name": "Melancholic", "emoji": "😔" },
+    { "id": "romantic", "name": "Romantic", "emoji": "💕" },
+    { "id": "nostalgic", "name": "Nostalgic", "emoji": "🌅" },
+    { "id": "mysterious", "name": "Mysterious", "emoji": "🌙" },
+    { "id": "confident", "name": "Confident", "emoji": "💪" }
+  ],
+  "vibes": [
+    { "id": "slow-jam", "name": "Slow Jam", "description": "Smooth, romantic slow tempo" },
+    { "id": "upbeat", "name": "Upbeat", "description": "Energetic and danceable" },
+    { "id": "chill", "name": "Chill", "description": "Relaxed and laid-back" },
+    { "id": "raw", "name": "Raw", "description": "Authentic, unpolished sound" },
+    { "id": "polished", "name": "Polished", "description": "Refined professional production quality" },
+    { "id": "groovy", "name": "Groovy", "description": "Funky rhythmic dance vibes" }
+  ],
+  "grooveTypes": [
+    { "id": "swing", "name": "Swing", "description": "Jazzy swing feel with triplet subdivisions" },
+    { "id": "straight", "name": "Straight", "description": "Even 8th note feel, classic R&B" },
+    { "id": "shuffle", "name": "Shuffle", "description": "Bluesy shuffle rhythm" }
+  ],
+  "leadInstruments": [
+    { "id": "saxophone", "name": "Saxophone", "description": "Smooth jazz saxophone lead" },
+    { "id": "rhodes-piano", "name": "Rhodes Piano", "description": "Warm electric piano tones" },
+    { "id": "smooth-electric-guitar", "name": "Smooth Electric Guitar", "description": "Clean, melodic guitar lines" },
+    { "id": "synth-lead", "name": "Synth Lead", "description": "Modern synthesizer melodies" }
+  ],
+  "drumKits": [
+    { "id": "acoustic-kit", "name": "Acoustic Kit", "description": "Classic drum set sound" },
+    { "id": "electronic-kit", "name": "Electronic Kit", "description": "80s/90s drum machine beats" },
+    { "id": "boom-bap-kit", "name": "90s Boom Bap Kit", "description": "Hip-hop influenced drums" },
+    { "id": "lo-fi-kit", "name": "Lo-fi Kit", "description": "Vintage, warm drum sounds" }
+  ],
+  "bassTones": [
+    { "id": "slap", "name": "Slap", "description": "Funk slap bass technique" },
+    { "id": "sub", "name": "Sub", "description": "Deep, rumbling sub bass" },
+    { "id": "synth", "name": "Synth", "description": "Synthesizer bass lines" },
+    { "id": "electric", "name": "Electric", "description": "Classic electric bass guitar" }
+  ],
+  "vocalGenders": [
+    { "id": "male", "name": "♂ Male" },
+    { "id": "female", "name": "♀ Female" }
+  ],
+  "vocalStyles": [
+    { "id": "natural", "name": "Natural", "description": "Natural vocal style" },
+    { "id": "falsetto", "name": "Falsetto", "description": "High-pitched vocal technique" },
+    { "id": "melismatic", "name": "Melismatic", "description": "Multiple notes per syllable" },
+    { "id": "spoken-rap", "name": "Spoken/Rap", "description": "Rhythmic spoken word style" },
+    { "id": "harmonized-group", "name": "Harmonized Group", "description": "Multi-part vocal harmonies" }
+  ],
+  "harmonyPalettes": [
+    { "id": "simple", "name": "Simple", "emoji": "🎵", "description": "Basic harmonies and chord progressions" },
+    { "id": "gospel", "name": "Gospel", "emoji": "🙏", "description": "Rich gospel chords and harmonies" },
+    { "id": "jazzy", "name": "Jazzy", "emoji": "🎷", "description": "Complex jazz harmonies and progressions" },
+    { "id": "soulful", "name": "Soulful", "emoji": "💙", "description": "Deep soul-inspired harmonies" }
+  ],
+  "mockLibraryData": [
+    {
+      "id": 1,
+      "title": "Beaver Creek",
+      "artist": "Middle School, Aso, Aviino",
+      "coverImage": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop&crop=center",
+      "createdAt": "2024-01-15",
+      "duration": "3:03",
+      "genre": "Ambient",
+      "vibe": "Chill",
+      "style": "layered harmonies, slow jam, warm bassline, 70 bpm; soft electric piano, male vocals, ambient, and gentle percussion for a sensual groove, smooth ambient, slow",
+      "lyrics": "Drifting through the night\nLike a river flowing free\nBeaver Creek, your melody\nCarries me away\n\nIn the moonlight's glow\nI can hear your gentle song\nWhispering secrets\nThat have been hidden for so long\n\nLet the music take you\nTo a place where dreams come true\nBeaver Creek, I'm listening\nTo the rhythm of you"
+    },
+    {
+      "id": 2,
+      "title": "Midnight Groove",
+      "artist": "Current User",
+      "coverImage": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop&crop=center",
+      "createdAt": "2024-01-15",
+      "duration": "3:45",
+      "genre": "Contemporary R&B",
+      "vibe": "Smooth",
+      "style": "smooth electric piano, male vocals, contemporary r&b, and gentle percussion for a sensual groove, smooth r&b, slow",
+      "lyrics": "Midnight calls my name\nIn the rhythm of the rain\nEvery beat, every note\nMakes my heart float\n\nGrooving through the night\nWith the stars shining bright\nThis melody, this groove\nIs all I need to move\n\nLet the music guide you\nThrough the darkness of the night\nMidnight Groove, keep playing\nUntil the morning light"
+    },
+    {
+      "id": 3,
+      "title": "Smooth Operator",
+      "artist": "Current User",
+      "coverImage": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=200&h=200&fit=crop&crop=center",
+      "createdAt": "2024-01-14",
+      "duration": "4:12",
+      "genre": "Neo-Soul",
+      "vibe": "Groovy",
+      "style": "neo-soul grooves, warm bassline, 85 bpm; rhodes piano, male vocals, neo-soul, and funky drums for a sensual groove, smooth neo-soul, medium tempo",
+      "lyrics": "Smooth operator, that's what you are\nMoving through the night like a shooting star\nEvery step you take, every move you make\nGot me hypnotized, I can't escape\n\nYou're the rhythm in my soul\nMaking my heart whole\nSmooth operator, take control\nOf this love that's taking hold\n\nLet the groove flow through you\nLike the wind through the trees\nSmooth operator, you're the key\nTo unlock this melody"
+    },
+    {
+      "id": 4,
+      "title": "Late Night Vibes",
+      "artist": "Current User",
+      "coverImage": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=200&h=200&fit=crop&crop=center",
+      "createdAt": "2024-01-13",
+      "duration": "3:28",
+      "genre": "Quiet Storm",
+      "vibe": "Romantic",
+      "style": "quiet storm atmosphere, slow jam, warm bassline, 65 bpm; soft electric piano, male vocals, quiet storm, and gentle percussion for a romantic groove, smooth quiet storm, slow",
+      "lyrics": "Late night vibes, they call my name\nIn the silence, I feel no shame\nEvery whisper, every sigh\nMakes me want to fly\n\nIn the darkness, I find my way\nThrough the music, I'll always stay\nLate night vibes, you're my guide\nIn this journey, side by side\n\nLet the night embrace you\nWith its gentle, loving touch\nLate night vibes, I need you so much\nTo heal this heart that's been broken"
+    },
+    {
+      "id": 5,
+      "title": "Funky Fresh",
+      "artist": "Current User",
+      "coverImage": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200&h=200&fit=crop&crop=center",
+      "createdAt": "2024-01-12",
+      "duration": "3:55",
+      "genre": "New Jack Swing",
+      "vibe": "Energetic",
+      "style": "new jack swing beats, funky bassline, 95 bpm; electric piano, male vocals, new jack swing, and electronic drums for an energetic groove, funky new jack swing, fast",
+      "lyrics": "Funky fresh, that's the way I feel\nEvery time I hear this rhythm, it's so real\nGot the groove, got the flow\nWatch me as I go\n\nMoving to the beat, feeling so alive\nThis music makes my spirit thrive\nFunky fresh, you're the one\nMaking my heart run\n\nLet the rhythm take you higher\nTo a place where dreams come true\nFunky fresh, I'm feeling you\nIn everything you do"
+    }
+  ]
+} 
