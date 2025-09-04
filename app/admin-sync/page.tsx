@@ -28,7 +28,7 @@ export default function AdminSyncPage() {
       const data = await response.json();
       setResult(data);
     } catch (error) {
-      setResult({ error: error.message });
+      setResult({ error: error instanceof Error ? error.message : 'An unknown error occurred' });
     } finally {
       setIsLoading(false);
     }
@@ -45,7 +45,7 @@ export default function AdminSyncPage() {
             <li>Go to your Supabase dashboard</li>
             <li>Navigate to Authentication → Users</li>
             <li>Copy the User ID of existing users</li>
-            <li>Paste the User ID below and click "Sync User"</li>
+            <li>Paste the User ID below and click &quot;Sync User&quot;</li>
           </ol>
         </div>
 

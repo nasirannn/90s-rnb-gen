@@ -68,7 +68,7 @@ export async function POST() {
           userId: user.id,
           email: user.email,
           status: 'error',
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error'
         });
         
         errorCount++;

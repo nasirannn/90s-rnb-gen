@@ -38,7 +38,7 @@ export async function GET(
     
     return NextResponse.json(
       { 
-        error: error instanceof Error ? error.message : 'Error occurred while getting status',
+        error: error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : 'Error occurred while getting status',
         success: false 
       },
       { status: 500 }

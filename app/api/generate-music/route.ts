@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json(
       { 
-        error: error instanceof Error ? error.message : 'Error occurred during music generation',
+        error: error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : 'Error occurred during music generation',
         success: false 
       },
       { status: 500 }

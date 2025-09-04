@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTimestampedLyrics } from '@/hooks/use-timestamped-lyrics';
 import { KaraokeLyrics } from './karaoke-lyrics';
 import { Button } from './button';
@@ -38,17 +38,17 @@ export function TimestampedLyricsDemo({ className = '' }: TimestampedLyricsDemoP
     await fetchLyrics(taskId, audioId);
   };
 
-  const handleTimeChange = (time: number) => {
+  const handleTimeChange = useCallback((time: number) => {
     setCurrentTime(time);
     updateCurrentTime(time);
-  };
+  }, [updateCurrentTime]);
 
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
 
   // 模拟播放进度
-  const simulatePlayback = () => {
+  const simulatePlayback = useCallback(() => {
     if (!isPlaying || lyrics.length === 0) return;
     
     const lastLyric = lyrics[lyrics.length - 1];
@@ -66,14 +66,14 @@ export function TimestampedLyricsDemo({ className = '' }: TimestampedLyricsDemoP
         handleTimeChange(newTime);
       }
     }, 100);
-  };
+  }, [isPlaying, lyrics, currentTime, handleTimeChange]);
 
   // 当播放状态改变时，开始或停止模拟
   useEffect(() => {
     if (isPlaying) {
       simulatePlayback();
     }
-  }, [isPlaying, currentTime, lyrics]);
+  }, [isPlaying, simulatePlayback]);
 
   return (
     <div className={`space-y-6 p-6 ${className}`}>

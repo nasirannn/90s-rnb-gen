@@ -36,18 +36,10 @@ export const CassetteTape = ({
           svgText = svgText.replace('class="reel-right"', 'class="reel-right paused"')
         }
         
-        // 添加标题到左上角和右上角黑色元素的中间
-        if (title) {
-          const titleElement = `
-            <text x="200" y="61" text-anchor="middle" dominant-baseline="middle" 
-                  font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
-                  fill="black" stroke="black" stroke-width="0.3">
-              ${title}
-            </text>
-          `
-          // 在</svg>之前插入标题
-          svgText = svgText.replace('</svg>', `${titleElement}</svg>`)
-        }
+        // 替换SVG模板中的变量
+        svgText = svgText.replace('{{SIDE_LETTER}}', sideLetter)
+        svgText = svgText.replace('{{DURATION}}', duration)
+        svgText = svgText.replace('{{TITLE}}', title)
         
         // 添加样式确保SVG填满容器
         svgText = svgText.replace(
@@ -62,7 +54,7 @@ export const CassetteTape = ({
     }
 
     loadSVG()
-  }, [sideLetter, duration, isPlaying])
+  }, [sideLetter, duration, isPlaying, title])
 
   if (!svgContent) {
     return (

@@ -13,6 +13,7 @@ interface ShowcaseTrack {
   duration: string;
   audioUrl: string;
   coverImage?: string;
+  genre?: string;
 }
 
 const showcaseTracks: ShowcaseTrack[] = [
@@ -22,6 +23,7 @@ const showcaseTracks: ShowcaseTrack[] = [
     creator: "Created By Electronic Pulse",
     duration: "3:45",
     audioUrl: "/audio/sample1.mp3",
+    genre: "Electronic",
   },
   {
     id: "2", 
@@ -29,6 +31,7 @@ const showcaseTracks: ShowcaseTrack[] = [
     creator: "Created By Ambient Chill",
     duration: "4:12",
     audioUrl: "/audio/sample2.mp3",
+    genre: "Ambient",
   },
   {
     id: "3",
@@ -36,6 +39,7 @@ const showcaseTracks: ShowcaseTrack[] = [
     creator: "Created By Synthwave",
     duration: "2:58",
     audioUrl: "/audio/sample3.mp3",
+    genre: "Synthwave",
   },
   {
     id: "4",
@@ -43,6 +47,7 @@ const showcaseTracks: ShowcaseTrack[] = [
     creator: "Created By female vocals, pop",
     duration: "2:45",
     audioUrl: "/audio/sample4.mp3",
+    genre: "Pop",
   },
 ];
 

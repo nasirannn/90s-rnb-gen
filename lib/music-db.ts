@@ -126,7 +126,7 @@ export const deleteMusicGeneration = async (id: string, userId: string): Promise
       [id, userId]
     );
 
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   } catch (error) {
     console.error('Error deleting music generation:', error);
     throw error;

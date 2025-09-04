@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Cover generation error:', error);
     
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    const errorMessage = error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : 'Unknown error occurred';
     
     return NextResponse.json(
       { error: `Failed to generate cover: ${errorMessage}` },

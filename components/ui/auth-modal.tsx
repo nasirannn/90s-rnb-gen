@@ -47,7 +47,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
         setMessage('Check your email for the confirmation link!');
       }
     } catch (error: any) {
-      setMessage(error.message);
+      setMessage(error instanceof Error ? error.message : 'Unknown error');
     } finally {
       setLoading(false);
     }
@@ -64,7 +64,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       });
       if (error) throw error;
     } catch (error: any) {
-      setMessage(error.message);
+      setMessage(error instanceof Error ? error.message : 'Unknown error');
       setLoading(false);
     }
   };

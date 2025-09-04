@@ -41,7 +41,7 @@ export async function GET(
     
     return NextResponse.json(
       { 
-        error: error instanceof Error ? error.message : 'Error occurred while getting cover status',
+        error: error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : 'Error occurred while getting cover status',
         success: false 
       },
       { status: 500 }

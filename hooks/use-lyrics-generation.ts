@@ -99,7 +99,7 @@ export const useLyricsGeneration = () => {
 
     } catch (error) {
       console.error("Lyrics generation failed:", error);
-      alert(error instanceof Error ? error.message : "Lyrics generation failed, please try again");
+      alert(error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : "Lyrics generation failed, please try again");
       setIsGeneratingLyrics(false);
     }
   };

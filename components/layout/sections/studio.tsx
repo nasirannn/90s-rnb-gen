@@ -332,7 +332,7 @@ export const StudioSection = () => {
                                         </div>
 
                                         {/* 3. 播放器 - 悬浮在右侧主内容区底部 */}
-                                        <div className="absolute bottom-6 left-6 right-6 bg-card/90 backdrop-blur-sm border border-border/60 rounded-2xl p-4 shadow-lg z-30 max-h-20">
+                                        <div className="absolute bottom-6 left-6 right-6 bg-card/30 backdrop-blur-sm border border-border/30 rounded-2xl p-4 shadow-lg z-30 max-h-20">
                                             <div className="flex items-center gap-4 h-full">
                                                 {/* 左侧：播放控制按钮 */}
                                                 <div className="flex items-center gap-3">
@@ -413,13 +413,17 @@ export const StudioSection = () => {
                                                     <button
                                                         onClick={() => {
                                                             const track = mockLibraryData.find(track => track.id === selectedLibraryTrack);
-                                                            if (track?.audioUrl) {
+                                                            if (track) {
+                                                                // 创建模拟的下载链接
                                                                 const link = document.createElement('a');
-                                                                link.href = track.audioUrl;
+                                                                link.href = '#'; // 模拟链接
                                                                 link.download = `${track.title}.mp3`;
                                                                 document.body.appendChild(link);
                                                                 link.click();
                                                                 document.body.removeChild(link);
+                                                                
+                                                                // 显示提示信息
+                                                                alert('下载功能将在实际部署时启用');
                                                             }
                                                         }}
                                                         className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-muted/80 rounded-full transition-all duration-200 flex items-center justify-center"

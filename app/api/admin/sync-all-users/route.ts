@@ -58,7 +58,7 @@ export async function POST() {
           userId,
           email: users.find(u => u.id === userId)?.email,
           status: 'error',
-          error: error.message
+          error: error instanceof Error ? error.message : 'Unknown error'
         });
         
         errorCount++;

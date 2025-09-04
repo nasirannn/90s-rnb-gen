@@ -136,7 +136,7 @@ export const useMusicGenerationLogic = () => {
 
     } catch (error) {
       console.error("Music generation failed:", error);
-      alert(error instanceof Error ? error.message : "Music generation failed, please try again");
+      alert(error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : "Music generation failed, please try again");
       setIsGenerating(false);
     }
   };

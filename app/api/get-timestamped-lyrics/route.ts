@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         error: 'Failed to get timestamped lyrics',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error instanceof Error ? error.message : 'Unknown error' : 'Unknown error'
       },
       { status: 500 }
     );
